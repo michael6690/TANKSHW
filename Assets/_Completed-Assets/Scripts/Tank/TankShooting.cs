@@ -17,7 +17,7 @@ namespace Complete
         public float m_MinLaunchForce = 15f;        // The force given to the shell if the fire button is not held.
         public float m_MaxLaunchForce = 30f;        // The force given to the shell if the fire button is held for the max charge time.
         public float m_MaxChargeTime = 0.75f;       // How long the shell can charge for before it is fired at max force.
-
+    
 
         private string m_FireButton;                // The input axis that is used for launching shells.
         private float m_CurrentLaunchForce;         // The force that will be given to the shell when the fire button is released.
@@ -66,6 +66,7 @@ namespace Complete
                 // Change the clip to the charging clip and start it playing.
                 m_ShootingAudio.clip = m_ChargingClip;
                 m_ShootingAudio.Play ();
+                
             }
             // Otherwise, if the fire button is being held and the shell hasn't been launched yet...
             else if (Input.GetButton (m_FireButton) && !m_Fired)
@@ -81,6 +82,7 @@ namespace Complete
                 // ... launch the shell.
                 Fire ();
             }
+       
         }
 
 

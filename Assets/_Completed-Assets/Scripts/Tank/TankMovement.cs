@@ -120,12 +120,13 @@ namespace Complete
         {
             if(Input.GetKey(KeyCode.Q))
             {
-                Gun.transform.Rotate(0.0f, -1.0f, 0.0f);
+                Gun.transform.Rotate(0.0f, -1.0f*2, 0.0f);
             }
             if (Input.GetKey(KeyCode.E))
             {
-                Gun.transform.Rotate(0.0f, 1.0f, 0.0f);
+                Gun.transform.Rotate(0.0f, 1.0f*2, 0.0f);
             }
+            
 
 
         }
@@ -138,6 +139,7 @@ namespace Complete
 
             // Apply this movement to the rigidbody's position.
             m_Rigidbody.MovePosition(m_Rigidbody.position + movement);
+            
         }
 
 
