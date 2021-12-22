@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
+using UnityEngine;
 
 namespace Complete
 {
@@ -20,6 +21,7 @@ namespace Complete
         private float m_OriginalPitch;              // The pitch of the audio source at the start of the scene.
         private ParticleSystem[] m_particleSystems; // References to all the particles systems used by the Tanks
         public GameObject Gun;
+        PhotonView Pv; 
 
         private void Awake ()
         {
@@ -68,6 +70,7 @@ namespace Complete
 
             // Store the original pitch of the audio source.
             m_OriginalPitch = m_MovementAudio.pitch;
+           
         }
 
 
@@ -116,17 +119,24 @@ namespace Complete
             Turn ();
             GunTurn();
         }
+        [PunRPC]
         private void GunTurn()
         {
-            if(Input.GetKey(KeyCode.Q))
+            if (Input.GetKey(KeyCode.Q))
             {
-                Gun.transform.Rotate(0.0f, -1.0f*2, 0.0f);
+                Gun.transform.Rotate(0.0f, -1.0f * 2, 0.0f);
             }
             if (Input.GetKey(KeyCode.E))
             {
-                Gun.transform.Rotate(0.0f, 1.0f*2, 0.0f);
+                Gun.transform.Rotate(0.0f, 1.0f * 2, 0.0f);
             }
-            
+            else
+            {
+                return;
+            }
+                
+
+
 
 
         }
